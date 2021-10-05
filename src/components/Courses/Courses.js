@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import Course from '../Course/Course';
 import './Courses.css'
+import { addToDb, getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
 
 
 const Courses = () => {
@@ -19,6 +20,40 @@ const Courses = () => {
 
     }, [])
     // console.log(courses);
+    const [enrollCourse, setEnrollCourse] = useState([]);
+    useEffect(() => {
+        if (courses.length) {
+            // get saved local storage data ... 
+            const savedEnrollCourse = getEnrollCourseFromLocalStorageDb();
+            const storedEnrollCourse = [];
+            for (const key in savedEnrollCourse) {
+                const matchedEnrollCourse = courses.find(course => course.key === key);
+                if (matchedEnrollCourse) {
+                    const quantity = savedEnrollCourse[key];
+                    matchedEnrollCourse.quantity = quantity;
+                    storedEnrollCourse.push(matchedEnrollCourse);
+                }
+            }
+            setEnrollCourse(storedEnrollCourse);
+        }
+    }, [courses])
+
+    const handleEnrollCourse = (course) => {
+        // console.log(course.key);
+        const newEnrollCourse = [...enrollCourse];
+        const isCourseExists = enrollCourse.find(enroll => enroll.key === course.key)
+        if(isCourseExists) {
+            course.quantity += 1
+        }
+        else {
+            course.quantity = 1
+            newEnrollCourse.push(course)
+        }
+        setEnrollCourse(newEnrollCourse)
+        // save to local storage (browser)
+        addToDb(course.key)
+
+    }
 
     const handleViewAllCourse = () => {
         history.push('/all-courses')
@@ -37,7 +72,7 @@ const Courses = () => {
                             <Col xs={12} md={12}>
                                 <Row xs={1} md={4} className="g-3">
                                     {
-                                        courses?.map(course => <Course key={course.key} course={course}></Course>)
+                                        courses?.map(course => <Course key={course.key} course={course} handleEnrollCourse={handleEnrollCourse}></Course>)
                                     }
                                 </Row>
                             </Col>
