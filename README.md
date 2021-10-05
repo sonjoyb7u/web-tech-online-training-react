@@ -26,7 +26,7 @@ git clone https://github.com/ProgrammingHeroWC4/review-website-sonjoyb7u
 
 ## Useful URl Link:
 
-- Live Demo URL Link:
+- Live Demo URL Link: https://webtech-dev-training-inst-app.netlify.app/
 - Github Repo Link: https://github.com/ProgrammingHeroWC4/review-website-sonjoyb7u
 
 ---
