@@ -11,7 +11,9 @@ const Course = (props) => {
     const faUserIcon = <FontAwesomeIcon icon={faUser} />
     const faLessonIcon = <FontAwesomeIcon icon={faBook} />
     const faEyeIcon = <FontAwesomeIcon icon={faEye} />
+
     const {key, category, name, instructor, img, price, star, startedAt, students, lesson} = props.course
+
     return (
         <div> 
             <Col className="course">
@@ -48,7 +50,7 @@ const Course = (props) => {
                     <NavLink to={`/course-detail/${key}`} className="icon" title="View Course">
                         {faEyeIcon}
                     </NavLink>
-                    <Button className="course-btn mx-auto btn-sm">Enroll This Course &nbsp; {faArrowRightIcon}</Button>
+                    <Button onClick={()=>props.handleEnrollCourse(props.course)} className="course-btn mx-auto btn-sm">Enroll This Course &nbsp; {faArrowRightIcon}</Button>
                 </div>
             </Col>
         </div>

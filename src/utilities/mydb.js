@@ -1,8 +1,8 @@
 // Use localStorage as my DB Server for now ... 
-const getLocalStorageKey = () => localStorage.getItem('buy_cart')
+const getLocalStorageKey = () => localStorage.getItem('enroll_course')
 
-const updateBuyCartDb = buy_cart => {
-    localStorage.setItem('buy_cart', JSON.stringify(buy_cart))
+const updateEnrollCourseDb = enroll_course => {
+    localStorage.setItem('enroll_course', JSON.stringify(enroll_course))
 }
 
 const addToDb = id => {
@@ -10,44 +10,42 @@ const addToDb = id => {
     // let localStorageKeyExists = localStorage.getItem(id)
     const localStorageKeyExists = getLocalStorageKey()
     // console.log(localStorageKeyExists);
-    let buy_cart_obj = {}
+    let enroll_course_obj = {}
     if(localStorageKeyExists === null) {
         // localStorage.setItem(id, 1)
-        buy_cart_obj[id] = 1
+        enroll_course_obj[id] = 1
     }
     else {
-        // const addNewQuantity = parseInt(localStorageKeyExists) + 1
-        // localStorage.setItem(id, addNewQuantity)
-        buy_cart_obj = JSON.parse(localStorageKeyExists) // convert JSON object to js object ...
-        if(buy_cart_obj[id]) {
-            const addNewQuantity = buy_cart_obj[id] + 1
-             buy_cart_obj[id] = addNewQuantity
+        enroll_course_obj = JSON.parse(localStorageKeyExists) // convert JSON object to js object ...
+        if(enroll_course_obj[id]) {
+            const addNewQuantity = enroll_course_obj[id] + 1
+             enroll_course_obj[id] = addNewQuantity
         }
         else {
-            buy_cart_obj[id] = 1
+            enroll_course_obj[id] = 1
         }
     }
-    updateBuyCartDb(buy_cart_obj)
+    updateEnrollCourseDb(enroll_course_obj)
     
 }
 
 const removeFromDb = (id) => {
     const localStorageKeyExists = getLocalStorageKey()
-    let buy_cart_obj = {}
+    let enroll_course_obj = {}
     if(localStorageKeyExists) {
-        buy_cart_obj = JSON.parse(localStorageKeyExists)
-        delete buy_cart_obj[id]
-        updateBuyCartDb(buy_cart_obj)
+        enroll_course_obj = JSON.parse(localStorageKeyExists)
+        delete enroll_course_obj[id]
+        updateEnrollCourseDb(enroll_course_obj)
     }
 }
 
-const getCartFromLocalStorageDb = () => {
+const getEnrollCourseFromLocalStorageDb = () => {
   const localStorageKeyExists = getLocalStorageKey();
   return localStorageKeyExists ? JSON.parse(localStorageKeyExists) : {};
 }
 
-const clearCart = () => {
-    localStorage.removeItem('buy_cart')
+const clearEnrollCourse = () => {
+    localStorage.removeItem('enroll_course')
 }
 
-export {addToDb, removeFromDb as deleteFromDb, getCartFromLocalStorageDb, clearCart}
+export {addToDb, removeFromDb, getEnrollCourseFromLocalStorageDb, clearEnrollCourse}

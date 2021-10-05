@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Button, Form, FormControl } from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { Col, Container, Row, Button, Form, FormControl } from 'react-bootstrap';
 import CartList from '../../components/CartList/CartList';
 import Course from '../../components/Course/Course';
 import MiniBanner from '../../components/MiniBanner/MiniBanner';
+import { addToDb, getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
 import './AllCourses.css'
 
 const AllCourses = () => {
-    const history = useHistory()
     const [courses, setCourses] = useState([])
+    const [enrollCourse, setEnrollCourse] = useState([]);
     const [searchCourses, setSearchCourses] = useState([])
+
+    const history = useHistory()
+    const handleReviewOrder = () => {
+        history.push('/review-order')
+    }
 
     useEffect(() => {
         const url = '/courses.JSON'
@@ -22,22 +28,49 @@ const AllCourses = () => {
 
     }, [])
     // console.log(courses);
+    useEffect(() => {
+        if (courses.length) {
+            // get saved local storage data ... 
+            const savedEnrollCourse = getEnrollCourseFromLocalStorageDb();
+            const storedEnrollCourse = [];
+            for (const key in savedEnrollCourse) {
+                const matchedEnrollCourse = courses.find(course => course.key === key);
+                if (matchedEnrollCourse) {
+                    const quantity = savedEnrollCourse[key];
+                    matchedEnrollCourse.quantity = quantity;
+                    storedEnrollCourse.push(matchedEnrollCourse);
+                }
+            }
+            setEnrollCourse(storedEnrollCourse);
+        }
+    }, [courses, searchCourses])
 
-    const handleReviewOrder = () => {
-        history.push('/review-order')
-    }
-
+    // input field search course ... 
     const handleSearchCourse = (event) => {
         const searchValue = event.target.value;
         const findSearchCourse = courses.filter(course => course.name.toLowerCase().includes(searchValue.toLowerCase()))
         setSearchCourses(findSearchCourse)
     }
+    // button search course ... 
     const handleSearchBtn = (event) => {
         event.preventDefault();
-        // const searchValue = event.target.value;
-        // console.log(searchValue);
-        // const findSearchCourse = courses.filter(course => course.name.toLowerCase().includes(searchValue.toLowerCase()))
-        // setSearchCourses(findSearchCourse)
+    }
+
+    const handleEnrollCourse = (course) => {
+        // console.log(course.key);
+        const newEnrollCourse = [...enrollCourse];
+        const isCourseExists = enrollCourse.find(enroll => enroll.key === course.key)
+        if(isCourseExists) {
+            course.quantity += 1
+        }
+        else {
+            course.quantity = 1
+            newEnrollCourse.push(course)
+        }
+        setEnrollCourse(newEnrollCourse)
+        // save to local storage (browser)
+        addToDb(course.key)
+
     }
     return (
         <div className="courses">
@@ -57,23 +90,23 @@ const AllCourses = () => {
                                 aria-label="Search"
                                 onChange={handleSearchCourse}
                             />
-                            <Button onClick={handleSearchBtn} className="course-search-btn">Search</Button>
+                            <Button className="course-search-btn">Search</Button>
                         </Form>
                     </div>
                 </Row>
                 <Row>
                    <section className="course-list mt-4">
                        <Row className="mb-5">
-                            <Col xs={12} md={9}>
-                                <Row xs={1} md={3} className="g-4">
+                            <Col xs={12} md={8}>
+                                <Row xs={1} md={3} className="g-2">
                                     {
-                                        searchCourses?.map(course => <Course key={course.key} course={course}></Course>)
+                                        searchCourses?.map(course => <Course key={course.key} course={course} handleEnrollCourse={handleEnrollCourse}></Course>)
                                     }
                                 </Row>
                             </Col>
-                            <Col xs={6} md={3}>
-                                <CartList>
-                                    <Button onClick={handleReviewOrder} className="review-order-btn mx-auto">Review For Order</Button>
+                            <Col xs={6} md={4}>
+                                <CartList enrollCourse={enrollCourse}>
+                                    <Button onClick={()=>handleReviewOrder()} className="review-order-btn mx-auto">Review For Order</Button>
                                 </CartList>
                             </Col>
                        </Row>

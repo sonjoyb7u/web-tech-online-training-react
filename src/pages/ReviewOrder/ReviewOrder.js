@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import CartList from '../../components/CartList/CartList';
 import MiniBanner from '../../components/MiniBanner/MiniBanner';
+import { getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
 import './ReviewOrder.css'
 
-const ReviewOrder = () => {
+const ReviewOrder = (props) => {
     const history = useHistory()
-
     const handlePlaceOrder = () => {
         history.push('/place-order')
     }
+
+    const [courses, setCourses] = useState([]);
+    const [enrollCourse, setEnrollCourse] = useState([]);
+
+    useEffect(() => {
+        const url = '/courses.JSON'
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            setCourses(data)
+        })
+
+    }, [])
+
+    useEffect(() => {
+        if (courses.length) {
+            // get saved local storage data ... 
+            const savedEnrollCourse = getEnrollCourseFromLocalStorageDb();
+            const storedEnrollCourse = [];
+            for (const key in savedEnrollCourse) {
+                const matchedEnrollCourse = courses.find(course => course.key === key);
+                if (matchedEnrollCourse) {
+                    const quantity = savedEnrollCourse[key];
+                    matchedEnrollCourse.quantity = quantity;
+                    storedEnrollCourse.push(matchedEnrollCourse);
+                }
+            }
+            setEnrollCourse(storedEnrollCourse);
+        }
+    }, [courses])
+
     return (
         <div>
             <Container>
@@ -24,35 +55,32 @@ const ReviewOrder = () => {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                    <th>#</th>
+                                    <th>Course Name</th>
+                                    <th>Instructor</th>
+                                    <th>Course Price</th>
+                                    <th>Video's</th>
+                                    <th>Started At</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                </tr>
-                                <tr>
-                                <td>3</td>
-                                <td colSpan="2">Larry the Bird</td>
-                                <td>@twitter</td>
+                                    <td>1</td>
+                                    <td>Complete React Developer in 2021 (w/ Redux, Hooks, GraphQL)</td>
+                                    <td>Andrei Neagoie, Yihua Zhang</td>
+                                    <td>$98</td>
+                                    <td>55</td>
+                                    <td>07-12-2021</td>
+                                    <td><span class="badge bg-info">Pending</span></td>
+                                    <td><Button className="btn btn-danger btn-sm">Remove</Button></td>
                                 </tr>
                             </tbody>
                         </Table>
                     </Col>
                     <Col xs={6} md={4}>
-                        <CartList>
+                        <CartList enrollCourse={enrollCourse}>
                             <Button onClick={handlePlaceOrder} className="place-order btn-sm">Place Order</Button>
                         </CartList>
                     </Col>
