@@ -3,7 +3,8 @@ import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router';
 import CartList from '../../components/CartList/CartList';
 import MiniBanner from '../../components/MiniBanner/MiniBanner';
-import { getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
+import ReviewCourseItem from '../../components/ReviewCourseItem/ReviewCourseItem';
+import { clearEnrollCourse, getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
 import './ReviewOrder.css'
 
 const ReviewOrder = (props) => {
@@ -13,8 +14,6 @@ const ReviewOrder = (props) => {
     }
 
     const [courses, setCourses] = useState([]);
-    const [enrollCourse, setEnrollCourse] = useState([]);
-
     useEffect(() => {
         const url = '/courses.JSON'
         fetch(url)
@@ -25,6 +24,7 @@ const ReviewOrder = (props) => {
 
     }, [])
 
+    const [enrollCourse, setEnrollCourse] = useState([]);
     useEffect(() => {
         if (courses.length) {
             // get saved local storage data ... 
@@ -41,6 +41,12 @@ const ReviewOrder = (props) => {
             setEnrollCourse(storedEnrollCourse);
         }
     }, [courses])
+
+    const handleRemoveCourseItem = (key) => {
+        const newEnrollCourseItem = enrollCourse.filter(course => course.key !== key)
+        setEnrollCourse(newEnrollCourseItem)
+        clearEnrollCourse(key)
+    }
 
     return (
         <div>
@@ -66,16 +72,9 @@ const ReviewOrder = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Complete React Developer in 2021 (w/ Redux, Hooks, GraphQL)</td>
-                                    <td>Andrei Neagoie, Yihua Zhang</td>
-                                    <td>$98</td>
-                                    <td>55</td>
-                                    <td>07-12-2021</td>
-                                    <td><span class="badge bg-info">Pending</span></td>
-                                    <td><Button className="btn btn-danger btn-sm">Remove</Button></td>
-                                </tr>
+                                {
+                                   enrollCourse.map(course => <ReviewCourseItem key={course.key} enrollCourse={course} handleRemoveCourseItem={handleRemoveCourseItem}></ReviewCourseItem>) 
+                                }
                             </tbody>
                         </Table>
                     </Col>
