@@ -1,0 +1,36 @@
+.course {
+  /* height: 100%; */
+  box-shadow: 2px 2px 10px 5px rgb(221, 216, 216);
+}
+.full-star {
+  color: #f0c14b;
+}
+.half-star {
+  color: #f0c14b;
+}
+Button.enroll-btn {
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #dd2476 51%,
+    #ff512f 100%
+  );
+  margin: 10px;
+  padding: 15px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  outline: none;
+  border: none;
+}
+
+Button.enroll-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}

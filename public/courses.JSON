@@ -1,0 +1,179 @@
+[
+    {
+        "key": "B002RL8IYK",
+        "category": "web design",
+        "name": "Web Design for Beginners: Real World Coding in HTML & CSS",
+		"instructor": "Brad Schiff",
+        "students": "6.5M",
+        "lesson": 55,
+        "star": 4.6,
+        "starCount": 18115,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/246154_d8b0_3.jpg"
+        },
+        "price": 112,
+        "courseContent": ["Create any website layout you can imagine", "Add tasteful animations and effects with CSS3", "Support any device size with Responsive (mobile-friendly) Design", "Use common vocabulary from the design industry"],
+        "startedAt": "07-11-2021"
+    },
+    {
+        "key": "B01LZ2WZGH",
+		"category": "web development",
+        "name": "Modern HTML & CSS From The Beginning (Including Sass)",
+		"instructor": "Brad Traversy",
+        "students": "60.5M",
+        "lesson": 55,
+        "star": 4.8,
+        "starCount": 20145,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/2153774_bef0_4.jpg"
+        },
+        "price": 90,
+        "courseContent": ["Build Multiple High Quality Website & UI Projects", "Flexbox & CSS Grid Projects", "Website Hosting & Deployment With FTP & Git", "HTML5 Semantic Layout & CSS Fundamentals", "CSS Variables, Transitions, Dropdowns, Overlays & More", "Website Hosting & Deployment With FTP & Git", "All Skill Levels"],
+        "startedAt": "07-10-2021"
+    },
+    {
+        "key": "B01K1IO3QW",
+		"category": "web development",
+        "name": "50 Projects In 50 Days - HTML, CSS & JavaScript",
+		"instructor": "Brad Traversy, Florin Pop",
+        "students": "3.5M",
+        "lesson": 55,
+        "star": 4.7,
+        "starCount": 5415,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/3671332_b86a.jpg"
+        },
+        "price": 95,
+        "courseContent": ["Project based teaching to sharpen your HTML, CSS & JavaScript skills", "Modern styling with flexbox, CSS animations, custom properties, etc", "DOM manipulation, events, array methods, HTTP requests & more"],
+        "startedAt": "07-11-2021"
+    },
+    {
+        "key": "B01LD4MGY4",
+		"category": "web development",
+        "name": "Complete React Developer in 2021 (w/ Redux, Hooks, GraphQL)",
+		"instructor": "Andrei Neagoie, Yihua Zhang",
+        "students": "7.5M",
+        "lesson": 55,
+        "star": 4.8,
+        "starCount": 16270,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/2365628_0b60_8.jpg"
+        },
+        "price": 98,
+        "courseContent": ["Build enterprise level React applications and deploy to production", "Learn the latest features in React including Hooks, Context API, Suspense, React Lazy + more", "Become the top 10% ReactJS Developer", "Use Redux, Redux Thunk and Redux Saga in your applications", "Set up authentication and user accounts", "Learn to lead React projects by making good architecture decisions and helping others on your team", "Learn CSS in JS with styled-components", "Converting apps to Progressive Web Apps", "Handling online payments with Stripe API", "Learn to build reactive, performant, large scale applications like a senior developer", "Routing with React Router", "Using the latest ES6/ES7/ES8/ES9/ES10/ES11 JavaScript to write clean code"],
+        "startedAt": "07-12-2021"
+    },
+    {
+        "key": "B01M18UZF5",
+		"category": "web development",
+        "name": "Node with React: Fullstack Web Development",
+		"instructor": "Stephen Grider",
+        "students": "7.6M",
+        "lesson": 55,
+        "star": 4.6,
+        "starCount": 13450,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/1254420_f6cb_4.jpg"
+        },
+        "price": 92,
+        "courseContent": ["Create boilerplate starter projects with React, Redux, Express, and Mongo", "Master deployment techniques between the production and development environments", "Learn to effectively create and send emails from a backend server", "Understand common web technologies and design patterns to connect them together", "Make an app with Google OAuth authentication", "Accept and process credit card payments from users"],
+        "startedAt": "07-12-2021"
+    },
+    {
+        "key": "B01DBGVB7K",
+		"category": "web development",
+        "name": "Object Oriented PHP & MVC",
+		"instructor": "Brad Traversy",
+        "students": "4.5M",
+        "lesson": 55,
+        "star": 4.8,
+        "starCount": 3944,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/1399390_4a26_2.jpg"
+        },
+        "price": 85,
+        "courseContent": ["Build a custom MVC Framework from absolute scratch", "Create a custom PDO class to handle database interactions", "Deploy your custom PHP application", "Build an application using your custom framework", "Complete user authentication using OOP & PDO"],
+        "startedAt": "07-11-2021"
+    },
+    {
+        "key": "B015WXL0C6",
+		"category": "web development",
+        "name": "PHP with Laravel for beginners - Become a Master in Laravel",
+		"instructor": "Edwin Diaz",
+        "students": "4.5M",
+        "lesson": 55,
+        "star": 4.5,
+        "starCount": 10532,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/758582_ea1f.jpg"
+        },
+        "price": 98,
+        "courseContent": ["Learn to build applications using laravel", "You will learn how use Laravel", "You will learn how to create and use Controllers and what they are", "You will learn to use the templating engine Blade", "How to use Laravel Tinker - Command line program to play around with Laravel without persisting data", "Database: Eloquent One to Many - CRUD", "Database: Eloquent Polymorphic - CRUD", "You will learn to create a BULK functionality that you can use the CRUD on it"],
+        "startedAt": "07-12-2021"
+    },
+    {
+        "key": "B06Y4GZS9C",
+		"category": "mobile development",
+        "name": "Android Java Masterclass - Become an App Developer",
+		"instructor": "Tim Buchalka, Jean-Pual Roberts",
+        "students": "6.5M",
+        "lesson": 55,
+        "star": 4.5,
+        "starCount": 9682,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/919872_ed54_6.jpg"
+        },
+        "price": 102,
+        "courseContent": ["You’re taught step by step HOW to build Android 7 apps for Google’s Nougat platform that will work on older Android versions.", "You’ll have EXPERT LEVEL knowledge of the Java programming language and know exactly how each process of Android Nougat development works.", "NEW CONTENT is always being added, and you're covered with full lifetime access to the course.", "The EXPERTISE to be an Android Nougat app developer as taught by the best.", "With each comprehensive step, the WHY you’re doing it is explained.", "The course is continually UPDATED, so you’ll learn the very latest as Android Nougat evolves.", "SUPPORT is mind blowing – questions you have are answered that day.", "The skills you’ll learn are in HIGH DEMAND. You’ve learned to program like an expert. Go get that job!"],
+        "startedAt": "07-12-2021"
+    },
+    {
+        "key": "B06XJJG4PD",
+		"category": "programming language",
+        "name": "JavaScript: The Advanced Concepts (2021)",
+		"instructor": "Andrie Neagoie",
+        "students": "5M",
+        "lesson": 55,
+        "star": 4.8,
+        "starCount": 9219,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/620486_8eb6_4.jpg"
+        },
+        "price": 93,
+        "courseContent": [""],
+        "startedAt": "07-11-2021"
+    },
+    {
+        "key": "B01NBE6Y5D",
+		"category": "programming language",
+        "name": "The Complete Java Certification Course",
+        "instructor": "Imtiaz Ahmad",
+        "students": "5.5M",
+        "lesson": 55,
+        "star": 4.5,
+        "starCount": 15460,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/827692_91ad_2.jpg"
+        },
+        "price": 120,
+        "courseContent": ["How to write Java Programs from scratch and have loads of fun in the process", "Go from zero to hero in writing industry ready Java programs", "Gain enough experience to pass a core Java Programming interview and perform well on the job", "Be prepared to take the Java Certification Exam for OCAJP 1Z0-808"],
+        "startedAt": "10-12-2021"
+    },
+    {
+        "key": "B01J42JPJG",
+		"category": "programming language",
+        "name": "Java Programming Masterclass covering Java 11 & Java 17",
+        "instructor": "Tim Buchalka",
+        "students": "6.2M",
+        "lesson": 55,
+        "star": 4.6,
+        "starCount": 148585,
+        "img": {
+            "thumb_1": "https://img-c.udemycdn.com/course/240x135/533682_c10c_4.jpg"
+        },
+        "price": 145,
+        "courseContent": ["Learn the core Java skills needed to apply for Java developer positions in just 14 hours.", "Be able to demonstrate your understanding of Java to future employers.","Acquire essential java basics for transitioning to the Spring Framework, Java EE, Android development and more.", "Be able to sit for and pass the Oracle Java Certificate exam if you choose.", "Learn industry 'best practices' in Java software development from a professional Java developer who has worked in the language for 18 years.", "Obtain proficiency in Java 8 and Java 11."],
+        "startedAt": "10-11-2021"
+    }
+    
+]

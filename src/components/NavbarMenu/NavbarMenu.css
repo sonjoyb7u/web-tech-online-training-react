@@ -1,0 +1,33 @@
+.navbar-menu {
+  background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
+  padding: 15px;
+}
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+}
+.navbar-link:hover {
+  color: #ff512f;
+}
+.logo {
+  border: 2px solid white;
+  padding: 10px;
+}
+.logo-part-1,
+.logo-part-2 {
+  font-size: 20px;
+  font-style: italic;
+}
+.logo-part-1 {
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(14, 174, 87, 1) 0%,
+    rgba(12, 116, 117, 1) 90%
+  );
+  padding: 4px;
+  border-radius: 5px;
+}
+.logo-part-2 {
+  color: #ff512f;
+  font-weight: 700;
+}
