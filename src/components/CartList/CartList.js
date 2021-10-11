@@ -33,6 +33,8 @@ const CartList = (props) => {
                   <th></th>
                   <th></th>
                   <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -40,18 +42,15 @@ const CartList = (props) => {
                   <th>Total Enrolled Course:</th>
                   <td><span className="badge bg-info text-dark">{totalQty}</span></td>
                   <td></td>
-                  <td></td>
                 </tr>
                 <tr>
                   <th>Price:</th>
                   <td>$ <span>{totalPrice?.toFixed(2)}</span></td>
                   <td></td>
-                  <td></td>
                 </tr>
                 <tr>
-                  <th>Total-Tax(10%):</th>
+                  <th>Tax(10%):</th>
                   <td>$ <span>{taxPrice?.toFixed(2)}</span></td>
-                  <td></td>
                   <td></td>
                 </tr>
                 <tr>

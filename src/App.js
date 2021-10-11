@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/contact-us">
             <ContactUs></ContactUs>
           </Route>
-          <Route path="*">
+          <Route exact path="*">
             <Error404></Error404>
           </Route>
         </Switch>

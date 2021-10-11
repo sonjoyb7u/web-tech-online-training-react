@@ -7,6 +7,7 @@ import CartList from '../../components/CartList/CartList';
 import './CourseDetail.css'
 import MiniBanner from '../../components/MiniBanner/MiniBanner';
 import { useHistory, useParams } from 'react-router';
+import { getEnrollCourseFromLocalStorageDb, removeFromDb } from '../../utilities/mydb';
 
 const CourseDetail = () => {
     const faArrowRightIcon = <FontAwesomeIcon icon={faArrowRight} />
@@ -30,8 +31,25 @@ const CourseDetail = () => {
         setCourse(matchedCourse)
 
     }, [courses])
-
     // console.log(course);
+
+    const [enrollCourse, setEnrollCourse] = useState([]);
+    useEffect(() => {
+        if (courses.length) {
+            // get saved local storage data ... 
+            const savedEnrollCourse = getEnrollCourseFromLocalStorageDb();
+            const storedEnrollCourse = [];
+            for (const key in savedEnrollCourse) {
+                const matchedEnrollCourse = courses.find(course => course.key === key);
+                if (matchedEnrollCourse) {
+                    const quantity = savedEnrollCourse[key];
+                    matchedEnrollCourse.quantity = quantity;
+                    storedEnrollCourse.push(matchedEnrollCourse);
+                }
+            }
+            setEnrollCourse(storedEnrollCourse);
+        }
+    }, [courses])
 
     const history = useHistory()
     const handleReviewOrder = () => {
@@ -69,7 +87,7 @@ const CourseDetail = () => {
                                     <p><strong>What you'll learn: </strong>
                                     <ul>
                                         {
-                                            course?.courseContent?.map(content => <li>{content}</li>)
+                                            course?.courseContent?.map(content => <li key={content}>{content}</li>)
                                         }
                                     </ul>
                                     
@@ -85,7 +103,7 @@ const CourseDetail = () => {
                         </Card>
                     </Col>
                     <Col xs={6} md={4}>
-                        <CartList>
+                        <CartList enrollCourse={enrollCourse}>
                             <Button  onClick={handleReviewOrder} className="review-order-btn btn-sm mx-auto">Review For Order</Button>
                         </CartList>
                     </Col>

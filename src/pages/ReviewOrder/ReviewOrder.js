@@ -4,14 +4,10 @@ import { useHistory, useParams } from 'react-router';
 import CartList from '../../components/CartList/CartList';
 import MiniBanner from '../../components/MiniBanner/MiniBanner';
 import ReviewCourseItem from '../../components/ReviewCourseItem/ReviewCourseItem';
-import { clearEnrollCourse, getEnrollCourseFromLocalStorageDb } from '../../utilities/mydb';
+import { clearEnrollCourse, getEnrollCourseFromLocalStorageDb, removeFromDb } from '../../utilities/mydb';
 import './ReviewOrder.css'
 
 const ReviewOrder = (props) => {
-    const history = useHistory()
-    const handlePlaceOrder = () => {
-        history.push('/place-order')
-    }
 
     const [courses, setCourses] = useState([]);
     useEffect(() => {
@@ -45,7 +41,13 @@ const ReviewOrder = (props) => {
     const handleRemoveCourseItem = (key) => {
         const newEnrollCourseItem = enrollCourse.filter(course => course.key !== key)
         setEnrollCourse(newEnrollCourseItem)
-        clearEnrollCourse(key)
+        removeFromDb(key)
+    }
+
+    const history = useHistory()
+    const handlePlaceOrder = () => {
+        clearEnrollCourse()
+        history.push('/place-order')
     }
 
     return (
@@ -62,9 +64,11 @@ const ReviewOrder = (props) => {
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Course Name</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
                                     <th>Instructor</th>
-                                    <th>Course Price</th>
+                                    <th>Price</th>
                                     <th>Video's</th>
                                     <th>Started At</th>
                                     <th>Status</th>
@@ -73,7 +77,7 @@ const ReviewOrder = (props) => {
                             </thead>
                             <tbody>
                                 {
-                                   enrollCourse.map(course => <ReviewCourseItem key={course.key} enrollCourse={course} handleRemoveCourseItem={handleRemoveCourseItem}></ReviewCourseItem>) 
+                                   enrollCourse?.map(course => <ReviewCourseItem key={course.key} enrollCourse={course} handleRemoveCourseItem={handleRemoveCourseItem}></ReviewCourseItem>) 
                                 }
                             </tbody>
                         </Table>
