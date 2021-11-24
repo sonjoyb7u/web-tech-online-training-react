@@ -63,8 +63,10 @@ const Courses = () => {
         <div className="courses">
             <Container>
                 <Row>
-                    <h1 className="heading"><span>P</span>opuler <span>C</span>ourses</h1>
-                    <p className="para">Browse Our Top Courses</p>
+                    <Col>
+                        <h2 className="heading"><span>P</span>opuler <span>C</span>ourses</h2>
+                        <p className="para">Browse Our Top Courses</p>
+                    </Col>
                 </Row>
                 <Row>
                    <section className="course-list mt-4">
